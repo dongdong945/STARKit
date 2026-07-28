@@ -62,7 +62,40 @@ struct CustomImageBackgroundLayer: View {
     @State
     private var measuredHeight: CGFloat = 0
 
+    @ViewBuilder
     var body: some View {
+        if usesContainerSizedLayout {
+            containerSizedBackground
+        } else {
+            geometryDrivenBackground
+        }
+    }
+
+    /// 固定全屏背景直接继承容器尺寸，避免转场期间按最终位置重新布局
+    private var usesContainerSizedLayout: Bool {
+        guard height == nil else { return false }
+
+        switch style {
+        case .fixed:
+            return true
+        case .scroll, .stickyTop, .stretchyTop:
+            return false
+        }
+    }
+
+    /// 固定背景直接填充页面容器
+    private var containerSizedBackground: some View {
+        (fillColor ?? .clear)
+            .overlay(alignment: .top) {
+                backgroundView
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+                    .clipped(if: scaling == .fill)
+            }
+            .ignoresSafeArea()
+    }
+
+    /// 滚动或指定高度背景沿用几何驱动布局
+    private var geometryDrivenBackground: some View {
         GeometryReader { geometry in
             let layout = CustomImageBackgroundLayout.make(style: style, scrollOffset: scrollOffset)
             let baseHeight = height ?? measuredHeight
