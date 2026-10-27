@@ -47,7 +47,7 @@ struct CustomBackgroundLayer<Background: View>: View {
     let scrollOffset: CGFloat
     let background: Background
 
-    @State
+    @StoredState
     private var measuredHeight: CGFloat = 0
 
     var body: some View {
@@ -113,7 +113,7 @@ struct CustomBackgroundContentModifier<Background: View>: ViewModifier {
     let style: CustomBackgroundStyle
     let background: Background
 
-    @State
+    @StoredState
     private var scrollOffset: CGFloat = 0
 
     func body(content: Content) -> some View {

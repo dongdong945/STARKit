@@ -59,7 +59,7 @@ struct CustomImageBackgroundLayer: View {
     let scaling: CustomImageBackgroundScaling
     let scrollOffset: CGFloat
 
-    @State
+    @StoredState
     private var measuredHeight: CGFloat = 0
 
     @ViewBuilder
@@ -183,7 +183,7 @@ struct CustomImageBackgroundContentModifier: ViewModifier {
     let style: CustomImageBackgroundStyle
     let scaling: CustomImageBackgroundScaling
 
-    @State
+    @StoredState
     private var scrollOffset: CGFloat = 0
 
     func body(content: Content) -> some View {

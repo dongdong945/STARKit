@@ -30,17 +30,17 @@ public struct CustomPicker<Item: Hashable, Content: View>: View {
     // 行为
     private var hapticStyle: UIImpactFeedbackGenerator.FeedbackStyle = .soft
 
-    @State
+    @StoredState
     private var scrollPosition: Item?
-    @State
+    @StoredState
     private var containerSize: CGSize = .init(width: 300, height: 300)
-    @State
+    @StoredState
     private var itemPositions: [Item: CGFloat] = [:]
-    @State
+    @StoredState
     private var isInitializing = true
-    @State
+    @StoredState
     private var isScrolling = false
-    @State
+    @StoredState
     private var scrollProxy: ScrollViewProxy?
 
     public init(

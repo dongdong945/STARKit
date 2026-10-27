@@ -10,7 +10,7 @@ public struct AlertWindowRootView<ContentView: View>: View {
     public let contentView: (AlertModal) -> ContentView
 
     // 用于取消延迟隐藏任务
-    @State
+    @StoredState
     private var hideWindowTask: DispatchWorkItem?
 
     public init(modal: AlertModal, window: UIWindow, contentView: @escaping (AlertModal) -> ContentView) {

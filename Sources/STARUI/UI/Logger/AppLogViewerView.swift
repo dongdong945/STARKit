@@ -4,22 +4,22 @@ import SwiftUI
 
 /// 日志查看页面
 public struct AppLogViewerView: View {
-    @State
+    @StoredState
     private var logs: [AppLogEntry] = AppLogger.currentLogs()
 
-    @State
+    @StoredState
     private var searchText: String = ""
 
-    @State
+    @StoredState
     private var selectedSubsystem: String?
 
-    @State
+    @StoredState
     private var selectedCategory: String?
 
-    @State
+    @StoredState
     private var selectedType: AppLogType?
 
-    @State
+    @StoredState
     private var expandedIDs: Set<UUID> = []
 
     public init() {}

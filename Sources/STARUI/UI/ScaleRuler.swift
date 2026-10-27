@@ -47,13 +47,13 @@ public struct ScaleRuler: View {
     private var enableSnapping: Bool = true
     private var hapticStyle: UIImpactFeedbackGenerator.FeedbackStyle = .soft
 
-    @State
+    @StoredState
     private var scrollPosition: Int?
-    @State
+    @StoredState
     private var containerSize: CGSize = .zero
-    @State
+    @StoredState
     private var tickPositions: [Int: CGFloat] = [:]
-    @State
+    @StoredState
     private var isInitializing: Bool = true
 
     public init(

@@ -31,7 +31,7 @@ public struct ProgressBar: View {
     /// 进度变化时的动画时长（秒）
     public let changeAnimationDuration: TimeInterval
 
-    @State
+    @StoredState
     private var animatedProgress: CGFloat = 0
 
     /// 创建进度条
@@ -242,7 +242,7 @@ public struct ProgressBar: View {
 #Preview("Real World") {
     /// Onboarding 进度示例
     struct OnboardingProgressDemo: View {
-        @State
+        @StoredState
         private var currentStep = 1
         let totalSteps = 5
 

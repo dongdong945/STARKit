@@ -60,10 +60,10 @@ struct CustomNavigationBarModifier<LeadingView: View, TitleView: View, TrailingV
     let config: CustomNavigationBarConfig
 
     /// 当前滚动偏移量
-    @State
+    @StoredState
     private var scrollOffset: CGFloat = 0
     /// 初始偏移量（用于补偿 ScrollView 的初始位置）
-    @State
+    @StoredState
     private var initialOffset: CGFloat? = nil
 
     /// 修正后的滚动偏移量（减去初始偏移）
